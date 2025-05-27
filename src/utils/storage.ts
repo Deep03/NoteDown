@@ -13,20 +13,19 @@ export const saveClipboardHistory = (history: ClipboardEntry[]): void => {
 
 export const addClipboardEntry = (content: string): void => {
   const history = getClipboardHistory();
+  const date = Date.now();
   const newEntry: ClipboardEntry = {
     id: crypto.randomUUID(),
     content,
-    timestamp: Date.now(),
+    timestamp: date,
   };
-  
   // Add to beginning of array (most recent first)
   const updatedHistory = [newEntry, ...history];
-  
-  // Limit history size (optional)
-  const limitedHistory = updatedHistory.slice(0, 50);
-  
-  saveClipboardHistory(limitedHistory);
+
+  saveClipboardHistory(updatedHistory);
 };
+
+
 
 export const clearClipboardHistory = (): void => {
   localStorage.removeItem(STORAGE_KEY);
