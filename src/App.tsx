@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import ClipboardList from './components/ClipboardList';
 import AddEntryForm from './components/AddEntryForm';
@@ -19,9 +19,7 @@ function App() {
             addEntry(text);
           }
         }
-      } catch (error) {
-        console.log('Unable to read clipboard. Extension needs permissions.');
-      }
+      } catch (error) {}
     };
 
     const intervalId = setInterval(checkClipboard, 5000);
