@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { ClipboardEntry } from '../types';
-import { getClipboardHistory, saveClipboardHistory, clearClipboardHistory } from '../utils/storage';
+import {
+  getClipboardHistory,
+  clearClipboardHistory,
+  addClipboardEntry,
+} from '../utils/storage';
 
 export const useClipboardHistory = () => {
   const [entries, setEntries] = useState<ClipboardEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Load clipboard history from storage on component mount
     const loadHistory = () => {
       const history = getClipboardHistory();
       setEntries(history);
@@ -18,15 +21,10 @@ export const useClipboardHistory = () => {
   }, []);
 
   const addEntry = (content: string) => {
-    const newEntry: ClipboardEntry = {
-      id: crypto.randomUUID(),
-      content,
-      timestamp: Date.now(),
-    };
+    addClipboardEntry(content);
+    const updated = getClipboardHistory();
 
-    const updatedEntries = [newEntry, ...entries];
-    setEntries(updatedEntries);
-    saveClipboardHistory(updatedEntries);
+    setEntries(updated);
   };
 
   const clearHistory = () => {
