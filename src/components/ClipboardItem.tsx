@@ -20,6 +20,7 @@ const ClipboardItem: React.FC<ClipboardItemProps> = ({ entry, theme = 'dark' }) 
     return new Intl.DateTimeFormat('en-US', {
       hour: '2-digit',
       minute: '2-digit',
+      second: '2-digit',  
       hour12: true,
       month: 'short',
       day: 'numeric',
@@ -27,10 +28,14 @@ const ClipboardItem: React.FC<ClipboardItemProps> = ({ entry, theme = 'dark' }) 
   };
 
   const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(entry.content);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const payload = JSON.stringify({
+    content: entry.content,
+    timestamp: entry.timestamp,
+  });
+  await navigator.clipboard.writeText(payload);
+  setCopied(true);
+  setTimeout(() => setCopied(false), 2000);
+};
 
   return (
     <div 
