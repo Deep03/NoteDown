@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 transition-colors duration-300;
+    min-width: 480px;
+    min-height: 600px;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  html.light body {
+    @apply from-gray-100 to-white text-gray-900;
+  }
+}
+
+@layer components {
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(75, 85, 99, 0.5) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+
+  .theme-toggle {
+    @apply relative w-12 h-6 rounded-full transition-colors duration-300 cursor-pointer;
+  }
+
+  .theme-toggle::after {
+    content: '';
+    @apply absolute left-1 top-1 w-4 h-4 rounded-full bg-white transition-transform duration-300;
+  }
+
+  .theme-toggle.active::after {
+    @apply transform translate-x-6;
+  }
+}
+
+.glass-effect {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html.light .glass-effect {
+  @apply bg-white/80 border-gray-200/50;
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.clipboard-item-new {
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gradient-border {
+  background: linear-gradient(var(--gradient-angle, 0deg), #3b82f6, #60a5fa, #93c5fd);
+  animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
