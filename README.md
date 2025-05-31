@@ -47,26 +47,19 @@ src/
 ---
 
 ## 🚀 Coming Soon
-
-* 🔒 Secure storage via IndexedDB
 * 🕵️ Clipboard monitoring in the background
 * 🔍 Search/filter clipboard history
-* 📱 Mobile-friendly layout improvements
-
 ---
 
 ## 🛠️ Tech Stack
 
-* **React** with TypeScript
+* **Vite + React** with TypeScript
 * **TailwindCSS** for UI styling
-* **Lucide Icons** for visual feedback
-* **localStorage** for persistence
-
 ---
 
 ## 🧠 Inspiration
 
-Created as a learning project to explore clipboard APIs, state persistence, and local-first UX patterns.
+Necessity.
 
 ---
 
@@ -75,5 +68,3 @@ Created as a learning project to explore clipboard APIs, state persistence, and 
 MIT License
 
 ---
-
-Let me know if you'd like sections for usage instructions, installation, or contribution guidelines too!
