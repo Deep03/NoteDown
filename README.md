@@ -1,7 +1,3 @@
-Sure! Here's a theoretical `README.md` outline for your clipboard history React project, written to be informative and appealing for GitHub users.
-
----
-
 # 📋 Notedown Clipboard History
 
 A minimalistic clipboard history tracker built with **React**, storing recent copied items locally and displaying them with sleek UI animations.
